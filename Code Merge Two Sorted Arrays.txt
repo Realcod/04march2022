@@ -1,0 +1,60 @@
+/*
+You have been given two sorted arrays/lists(ARR1 and ARR2) of size N and M respectively,
+ merge them into a third array/list such that the third array is also sorted.
+*/
+#include<iostream>
+using namespace std;
+
+void mergetwoarrays(int a[],int b[],int c[],int size,int size1){
+	int i=0,j=0,index=0;
+	while(i<size&&j<size1){
+		if(a[i]<b[j]){
+			c[index]=a[i];
+			index++;
+			i++;
+		}
+		else{
+			c[index]=b[j];
+			index++;
+			j++;
+		}
+	}
+	
+	while(i<size){
+		c[index]=a[i];
+		i++;
+		index++;
+	}
+	
+	while(j<size1){
+		c[index]=b[j];
+		j++;
+		index++;
+	}
+	
+	cout<<"After sorting arrays elements are:- "<<endl;
+	for(int k=0;k<index;k++){
+		cout<<c[k]<<" ";
+	}
+}
+
+int main(){
+	int a[100],b[100],c[100],size,size1;
+	cout<<"Enter the size of the first array"<<endl;
+	cin>>size;
+	
+	cout<<"Enter the elements in the first array"<<endl;
+	for(int i=0;i<size;i++){
+		cin>>a[i];
+	}
+	
+	cout<<"Enter the size of second array"<<endl;
+	cin>>size1;
+	
+	cout<<"Enter the elements in the second array"<<endl;
+	for(int i=0;i<size1;i++){
+		cin>>b[i];
+	}
+	
+	mergetwoarrays(a,b,c,size,size1);
+}
